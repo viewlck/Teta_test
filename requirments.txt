@@ -4,3 +4,4 @@ numpy==1.19.2
 catboost==0.26.1
 scikit-uplift==0.4.0
 scipy==1.7.1
+voila>=0.1.8
