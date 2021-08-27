@@ -10,16 +10,16 @@ Data obtained from the [X5 Retail Hero: Uplift Modeling for Promotional Campaign
 """)
 
 st.markdown("""
-[Example CSV input file](https://raw.githubusercontent.com/dataprofessor/data/master/penguins_example.csv)
+[Example CSV input file](https://raw.githubusercontent.com/viewlck/Teta_test/main/example.csv)
 """)
 
 # Collects user input features into dataframe
 uploaded_file = st.file_uploader("Choose a file", type=['csv'])
 if uploaded_file is not None:
-    input_df = pd.read_csv(uploaded_file)
+    input_df = pd.read_csv(uploaded_file,index_col='client_id')
     st.write(input_df)
     ind = input_df.index
-    model = joblib.load('model_prod.pkl')
+    model = joblib.load('model.pkl')
     uplift = model.predict(input_df)
     df = pd.DataFrame(data={'uplift':uplift},index = ind)
     st.write(df)
